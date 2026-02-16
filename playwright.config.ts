@@ -10,7 +10,7 @@ const baseURLs = {
 const baseURL = baseURLs[TEST_ENV as keyof typeof baseURLs] || baseURLs.production;
 
 export default defineConfig({
-  testDir: './tests',  // <-- corrected to match your folder
+  testDir: '.',
   fullyParallel: false,
   forbidOnly: !!process.env.CI,
   timeout: 160_000,
