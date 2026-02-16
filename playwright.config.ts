@@ -11,7 +11,7 @@ const baseURL =
   baseURLs[TEST_ENV as keyof typeof baseURLs] || baseURLs.production;
 
 export default defineConfig({
-  testDir: './amazontest/test',
+  testDir: './amazontest/test/test',
 
   fullyParallel: false,
   forbidOnly: !!process.env.CI,
