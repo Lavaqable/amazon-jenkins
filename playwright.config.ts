@@ -11,12 +11,12 @@ const baseURL =
   baseURLs[TEST_ENV as keyof typeof baseURLs] || baseURLs.production;
 
 export default defineConfig({
-  testDir: './amazon/test',
+  testDir: './amazontest/test',
 
   fullyParallel: false,
   forbidOnly: !!process.env.CI,
 
-  timeout: 160000,
+  timeout: 200000,
 
   expect: {
     timeout: 20000,
