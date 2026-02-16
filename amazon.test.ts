@@ -1,9 +1,9 @@
 
 import { test } from '@playwright/test';
-import { HomePage } from '../pages/homepage';
-import { PLPPage } from '../pages/plppage';
-import { PDPPage } from '../pages/pdppage';
-import { CartPage } from '../pages/cartpage';
+import { HomePage } from './pages/homepage';
+import { PLPPage } from './pages/plppage';
+import { PDPPage } from './pages/pdppage';
+import { CartPage } from './pages/cartpage';
 
 test('Amazon search with click 5th product and dropdown option select the random product', { tag: ['@regression'] }, async ({ page }) => {
 
