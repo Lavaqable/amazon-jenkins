@@ -1,0 +1,71 @@
+// pipeline {
+//     agent any
+
+//     tools {
+//         nodejs 'NodeJS'
+//     }
+
+//     stages {
+//         stage('Checkout') {
+//             steps {
+//                 git 'https://github.com/Lavaqable/amazon-script.git'
+//             }
+//         }
+
+//         stage('Install Dependencies') {
+//             steps {
+//                 bat 'npm install'
+//                 bat 'npx playwright install --with-deps'
+//             }
+//         }
+
+//         stage('Run Playwright Tests') {
+//             steps {
+//                 bat '''
+//                 set CI=true
+//                 npx playwright test --workers=1 --retries=2
+//                 '''
+//             }
+//         }
+//     }
+
+//     post {
+//         always {
+//             archiveArtifacts artifacts: 'playwright-report/**', allowEmptyArchive: true
+//         }
+//     }
+// }
+pipeline {
+    agent any
+
+    tools {
+        nodejs "NodeJS"
+    }
+
+    stages {
+        stage('Checkout') {
+            steps {
+                git 'https://github.com/Lavaqable/amazon-script.git'
+            }
+        }
+
+        stage('Install Dependencies') {
+            steps {
+                bat 'npm install'
+                bat 'npx playwright install'
+            }
+        }
+
+        stage('Run Tests in Headed Mode') {
+            steps {
+                bat 'npx playwright test --headed'
+            }
+        }
+    }
+
+    post {
+        always {
+            archiveArtifacts artifacts: 'playwright-report\\**', fingerprint: true
+        }
+    }
+}
