@@ -1,20 +1,13 @@
 {
   "name": "amazon",
   "version": "1.0.0",
-  "description": "Playwright tests for Amazon",
-  "main": "index.js",
+  "description": "",
   "type": "commonjs",
   "scripts": {
-    "test": "npx playwright test"
-  },
-  "dependencies": {
-    "playwright": "^1.58.2"
+    "test": "playwright test"
   },
   "devDependencies": {
     "@playwright/test": "^1.58.2",
     "@types/node": "^25.2.3"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC"
+  }
 }
