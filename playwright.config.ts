@@ -7,36 +7,27 @@ const baseURLs = {
   production: 'https://www.amazon.in/',
 };
 
-const baseURL =
-  baseURLs[TEST_ENV as keyof typeof baseURLs] || baseURLs.production;
+const baseURL = baseURLs[TEST_ENV as keyof typeof baseURLs] || baseURLs.production;
 
 export default defineConfig({
-  testDir: './amazontest/test/test',
-
+  testDir: './tests',  // <-- corrected to match your folder
   fullyParallel: false,
   forbidOnly: !!process.env.CI,
-
-  timeout: 200000,
-
+  timeout: 160_000,
   expect: {
-    timeout: 20000,
+    timeout: 20_000,
   },
-
   retries: process.env.CI ? 2 : 0,
   workers: process.env.CI ? 1 : undefined,
-
   use: {
     baseURL,
     headless: process.env.CI ? true : false,
     browserName: 'chromium',
-
-    actionTimeout: 40000,
-    navigationTimeout: 90000,
-
+    actionTimeout: 40_000,
+    navigationTimeout: 90_000,
     screenshot: 'only-on-failure',
     video: 'retain-on-failure',
     trace: 'retain-on-failure',
-
     launchOptions: {
       args: process.env.CI
         ? [
@@ -48,9 +39,9 @@ export default defineConfig({
         : [],
     },
   },
-
   reporter: [
     ['list'],
     ['html', { outputFolder: 'playwright-report', open: 'never' }],
   ],
 });
+
